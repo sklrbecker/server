@@ -30,7 +30,9 @@
 					autocapitalize="off"
 					:placeholder="t('core', 'Username or email')"
 					:aria-label="t('core', 'Username or email')"
+					:readonly="usernameReadonly"
 					required
+					@focus="usernameReadonly = false"
 					@change="updateUsername">
 				<!--<?php p($_['user_autofocus'] ? 'autofocus' : ''); ?>
 				autocomplete="<?php p($_['login_form_autocomplete']); ?>" autocapitalize="none" autocorrect="off"-->
@@ -102,6 +104,7 @@ export default {
 			loading: false,
 			message: undefined,
 			user: this.username,
+			usernameReadonly: true,
 		}
 	},
 	watch: {
