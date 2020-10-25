@@ -173,7 +173,7 @@ class Install extends Command {
 			$adminPassword = $helper->ask($input, $output, $question);
 		}
 
-		if ($adminEmail !== null && !filter_var($adminEmail, FILTER_VALIDATE_EMAIL)) {
+		if ($adminEmail !== null && preg_match('[A-z0-9]+@[A-z0-9.]+', $adminEmail)) {
 			throw new InvalidArgumentException('Invalid e-mail-address <' . $adminEmail . '> for <' . $adminLogin . '>.');
 		}
 
